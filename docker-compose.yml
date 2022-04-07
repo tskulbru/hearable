@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  hearable:
+    image: tskulbru/hearable:latest
+    container_name: hearable
+    volumes:
+        - '/path/to/config/:/config:rw'
+        - '/path/to/storage/:/storage:rw'
