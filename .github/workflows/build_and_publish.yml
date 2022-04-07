@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - '**'
+      - '*'
 
 jobs:
   push_to_registry:
