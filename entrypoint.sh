@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 if [ -z "$AUTHCODE" ]; then
-  AUTHCODE="$(jq -r '$ENV[.activation_bytes]' /config/audible.json)"
+  AUTHCODE="$(jq -r '.activation_bytes' /config/audible.json)"
   if [ -z "$AUTHCODE" ]; then
     echo "ERROR: Missing authcode / activation_bytes from audible json. Check README"
     exit 1
