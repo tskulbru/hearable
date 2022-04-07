@@ -40,11 +40,11 @@ docker run -d \
   tskulbru/hearable
 ```
 
-### Paremeters
+### Parameters
 
 | Parameter | Function |
 | :----: | --- |
-| `-e BOOK_TITLES=1000` | Optionally you can define specific books for download, uses keywords. If missing it will download all books from library. |
+| `-e BOOK_TITLES=Mockingjay` | Optionally you can define specific books for download, uses keywords. If missing it will download all books from library. |
 | `-v /config` | Audible configuration location, api keys and authcodes. |
 | `-v /storage` | Finished converted media ends up here. |
 | `-v /backup` | Optionally you can also save your downloaded AAX files from audible in case you want to convert to different formats later on. |
