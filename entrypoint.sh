@@ -3,7 +3,11 @@
 set -e
 
 if [ -z "$AUTHCODE" ]; then
-  AUTHCODE="$(jq -r '.activation_bytes' /config/audible.json)"
+  AUTHFILE=$(grep -A 1 "\[profile.audible\]" /config/config.toml | awk -F "auth_files = " '{print $2}' | tr -d '\n' | tr -d '"')
+  if [ -z "$AUTHFILE" ]; then
+    AUTHFILE="audible.json"
+  fi
+  AUTHCODE="$(jq -r '.activation_bytes' /config/$AUTHFILE)"
   if [ -z "$AUTHCODE" ]; then
     echo "ERROR: Missing authcode / activation_bytes from audible json. Check README"
     exit 1
