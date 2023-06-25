@@ -12,14 +12,14 @@ fi
 
 if [ -z "$BOOK_TITLES" ]; then
   echo "Fetching everything from library since BOOK_TITLES was unspecified.."
-  yes | audible download --all --aax --cover --cover-size 1215 --chapter --output-dir /data --ignore-errors
+  yes | audible download --all --aax-fallback --cover --cover-size 1215 --chapter --output-dir /data --ignore-errors
 else
   echo "Fetching only books matching: ${BOOK_TITLES}"
-  audible download -t "${BOOK_TITLES}" --aax --cover --cover-size 1215 --chapter --output-dir /data --ignore-errors --no-confirm
+  audible download -t "${BOOK_TITLES}" --aax-fallback --cover --cover-size 1215 --chapter --output-dir /data --ignore-errors --no-confirm
 fi
 
-AAX_FILES=(/data/*.aax)
-if [[ "$AAX_FILES" == "/data/*.aax" ]]; then
+AAX_FILES=(/data/*.aax*)
+if [[ "$AAX_FILES" == "/data/*.aax*" ]]; then
   echo "ERROR: No AAX files found, exiting."
   exit 1
 else
